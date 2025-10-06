@@ -1,0 +1,18 @@
+.App {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+/* Estilos customizados adicionais se necessário */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Animações suaves para hover effects */
+.card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
