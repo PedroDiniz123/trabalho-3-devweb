@@ -24,6 +24,12 @@ const Navigation: React.FC = () => {
             >
               Turmas
             </Nav.Link>
+            <Nav.Link
+              href="/grupos"
+              className={location.pathname === '/grupos' ? 'active' : ''}
+            >
+              Grupos
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

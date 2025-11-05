@@ -58,17 +58,7 @@ export const apiService = {
 
   // Obter alunos inscritos em uma turma específica
   getAlunosPorTurma: async (turmaId: number): Promise<Aluno[]> => {
-    const [inscricoes, alunos] = await Promise.all([
-      api.get('/inscricoes'),
-      api.get('/alunos')
-    ]);
-
-    const inscricoesDaTurma = inscricoes.data.filter((inscricao: Inscricao) =>
-      inscricao.turmaId === turmaId
-    );
-
-    const alunoIds = inscricoesDaTurma.map((inscricao: Inscricao) => inscricao.alunoId);
-
-    return alunos.data.filter((aluno: Aluno) => alunoIds.includes(aluno.id));
+    const response = await api.get(`/turmas/${turmaId}/alunos`);
+    return response.data;
   }
 };

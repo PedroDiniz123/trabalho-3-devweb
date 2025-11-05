@@ -38,4 +38,9 @@ public class InscricaoController {
     public ResponseEntity<List<InscricaoDTO>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
+
+    @GetMapping("/turma/{turmaId}")
+    public ResponseEntity<List<InscricaoDTO>> findByTurmaId(@PathVariable Long turmaId) {
+        return ResponseEntity.ok(service.findByTurmaId(turmaId));
+    }
 }

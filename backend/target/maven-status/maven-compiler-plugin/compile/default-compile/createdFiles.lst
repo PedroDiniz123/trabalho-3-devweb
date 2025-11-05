@@ -11,6 +11,7 @@ com\jpbarreiro\trabalho2devweb\dto\ProfessorDTO.class
 com\jpbarreiro\trabalho2devweb\dto\TurmaDTO.class
 com\jpbarreiro\trabalho2devweb\exception\ResourceNotFoundException.class
 com\jpbarreiro\trabalho2devweb\controller\TurmaController.class
+com\jpbarreiro\trabalho2devweb\config\CorsConfig.class
 com\jpbarreiro\trabalho2devweb\controller\InscricaoController.class
 com\jpbarreiro\trabalho2devweb\exception\GlobalExceptionHandler.class
 com\jpbarreiro\trabalho2devweb\service\AlunoService.class

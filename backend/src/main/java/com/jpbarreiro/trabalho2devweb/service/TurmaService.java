@@ -1,9 +1,11 @@
 package com.jpbarreiro.trabalho2devweb.service;
 
+import com.jpbarreiro.trabalho2devweb.dto.AlunoDTO;
 import com.jpbarreiro.trabalho2devweb.dto.TurmaDTO;
 import com.jpbarreiro.trabalho2devweb.exception.ResourceNotFoundException;
 import com.jpbarreiro.trabalho2devweb.model.Professor;
 import com.jpbarreiro.trabalho2devweb.model.Turma;
+import com.jpbarreiro.trabalho2devweb.repository.InscricaoRepository;
 import com.jpbarreiro.trabalho2devweb.repository.ProfessorRepository;
 import com.jpbarreiro.trabalho2devweb.repository.TurmaRepository;
 import org.springframework.stereotype.Service;
@@ -16,10 +18,12 @@ public class TurmaService {
 
     private final TurmaRepository turmaRepository;
     private final ProfessorRepository professorRepository;
+    private final InscricaoRepository inscricaoRepository;
 
-    public TurmaService(TurmaRepository turmaRepository, ProfessorRepository professorRepository) {
+    public TurmaService(TurmaRepository turmaRepository, ProfessorRepository professorRepository, InscricaoRepository inscricaoRepository) {
         this.turmaRepository = turmaRepository;
         this.professorRepository = professorRepository;
+        this.inscricaoRepository = inscricaoRepository;
     }
 
     public TurmaDTO create(TurmaDTO dto) {
@@ -67,6 +71,17 @@ public class TurmaService {
         return turmaRepository.findAll()
                 .stream()
                 .map(TurmaDTO::new)
+                .collect(Collectors.toList());
+    }
+
+    public List<AlunoDTO> getAlunosByTurma(Long turmaId) {
+        if (!turmaRepository.existsById(turmaId)) {
+            throw new ResourceNotFoundException("Turma não encontrada com id " + turmaId);
+        }
+
+        return inscricaoRepository.findByTurmaId(turmaId)
+                .stream()
+                .map(inscricao -> new AlunoDTO(inscricao.getAluno()))
                 .collect(Collectors.toList());
     }
 }

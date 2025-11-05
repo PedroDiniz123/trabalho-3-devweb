@@ -1,7 +1,7 @@
 package com.jpbarreiro.trabalho2devweb.controller;
 
+import com.jpbarreiro.trabalho2devweb.dto.AlunoDTO;
 import com.jpbarreiro.trabalho2devweb.dto.TurmaDTO;
-import com.jpbarreiro.trabalho2devweb.model.Turma;
 import com.jpbarreiro.trabalho2devweb.service.TurmaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,5 +38,10 @@ public class TurmaController {
     @GetMapping
     public ResponseEntity<List<TurmaDTO>> findAll() {
         return ResponseEntity.ok(service.findAll());
+    }
+
+    @GetMapping("/{id}/alunos")
+    public ResponseEntity<List<AlunoDTO>> getAlunosByTurma(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getAlunosByTurma(id));
     }
 }

@@ -71,4 +71,11 @@ public class InscricaoService {
                 .map(InscricaoDTO::new)
                 .collect(Collectors.toList());
     }
+
+    public List<InscricaoDTO> findByTurmaId(Long turmaId) {
+        return inscricaoRepository.findByTurmaId(turmaId)
+                .stream()
+                .map(InscricaoDTO::new)
+                .collect(Collectors.toList());
+    }
 }
