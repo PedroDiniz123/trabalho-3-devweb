@@ -44,4 +44,9 @@ public class TurmaController {
     public ResponseEntity<List<AlunoDTO>> getAlunosByTurma(@PathVariable Long id) {
         return ResponseEntity.ok(service.getAlunosByTurma(id));
     }
+
+    @GetMapping("/{id}/alunos-nao-inscritos")
+    public ResponseEntity<List<AlunoDTO>> getAlunosNaoInscritos(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getAlunosNaoInscritos(id));
+    }
 }

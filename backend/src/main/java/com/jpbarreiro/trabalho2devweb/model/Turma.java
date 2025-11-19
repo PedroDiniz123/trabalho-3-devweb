@@ -23,5 +23,9 @@ public class Turma {
     @ManyToOne
     @JoinColumn(name = "professor_id", nullable = false)
     private Professor professor;
+
+    @ManyToOne
+    @JoinColumn(name = "disciplina_id", nullable = false)
+    private Disciplina disciplina;
 }
 

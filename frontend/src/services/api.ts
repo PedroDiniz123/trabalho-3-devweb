@@ -60,5 +60,47 @@ export const apiService = {
   getAlunosPorTurma: async (turmaId: number): Promise<Aluno[]> => {
     const response = await api.get(`/turmas/${turmaId}/alunos`);
     return response.data;
-  }
+  },
+
+  // Criar aluno
+  createAluno: async (data: Omit<Aluno, 'id' | 'inscricoes'>): Promise<Aluno> => {
+    const response = await api.post('/alunos', data);
+    return response.data;
+  },
+
+  // Atualizar aluno
+  updateAluno: async (id: number, data: Omit<Aluno, 'id' | 'inscricoes'>): Promise<Aluno> => {
+    const response = await api.put(`/alunos/${id}`, data);
+    return response.data;
+  },
+
+  // Disciplinas
+  getDisciplinas: async (): Promise<any[]> => {
+    const response = await api.get('/disciplinas');
+    return response.data;
+  },
+
+  // Turmas por disciplina
+  getTurmasPorDisciplina: async (disciplinaId: number): Promise<Turma[]> => {
+    const response = await api.get(`/disciplinas/${disciplinaId}/turmas`);
+    return response.data;
+  },
+
+  // Alunos NÃO inscritos em uma turma
+  getAlunosNaoInscritosNaTurma: async (turmaId: number): Promise<Aluno[]> => {
+    const response = await api.get(`/turmas/${turmaId}/alunos-nao-inscritos`);
+    return response.data;
+  },
+
+  // Inscrições por turma
+  getInscricoesPorTurma: async (turmaId: number): Promise<Inscricao[]> => {
+    const response = await api.get(`/inscricoes/turma/${turmaId}`);
+    return response.data;
+  },
+
+  // Criar inscrição
+  createInscricao: async (data: { alunoId: number; turmaId: number }): Promise<Inscricao> => {
+    const response = await api.post('/inscricoes', data);
+    return response.data;
+  },
 };

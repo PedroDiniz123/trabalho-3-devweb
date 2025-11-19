@@ -32,7 +32,7 @@ public class ProfessorDTO {
         if (professor.getTurmas() != null) {
             this.turmas = professor.getTurmas()
                     .stream()
-                    .map(t -> new TurmaDTO(t.getId(), t.getNome(), t.getProfessor().getId(), t.getAno(), t.getPeriodo()))
+                    .map(TurmaDTO::new)
                     .toList();
         }
     }

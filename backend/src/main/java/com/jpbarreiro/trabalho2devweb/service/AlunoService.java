@@ -25,10 +25,14 @@ public class AlunoService {
         if (dto.getEmail() == null || dto.getEmail().isBlank()) {
             throw new IllegalArgumentException("Email é obrigatório");
         }
+        if (dto.getCpf() == null || dto.getCpf().isBlank()) {
+            throw new IllegalArgumentException("CPF é obrigatório");
+        }
 
         Aluno aluno = new Aluno();
         aluno.setNome(dto.getNome());
         aluno.setEmail(dto.getEmail());
+        aluno.setCpf(dto.getCpf());
 
         Aluno saved = repository.save(aluno);
 
@@ -44,6 +48,9 @@ public class AlunoService {
         }
         if (dto.getEmail() != null && !dto.getEmail().isBlank()) {
             aluno.setEmail(dto.getEmail());
+        }
+        if (dto.getCpf() != null && !dto.getCpf().isBlank()) {
+            aluno.setCpf(dto.getCpf());
         }
 
         Aluno updated = repository.save(aluno);

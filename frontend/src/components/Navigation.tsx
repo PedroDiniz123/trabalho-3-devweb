@@ -19,10 +19,22 @@ const Navigation: React.FC = () => {
               Alunos
             </Nav.Link>
             <Nav.Link
+              href="/cadastro-alunos"
+              className={location.pathname === '/cadastro-alunos' ? 'active' : ''}
+            >
+              Cadastro de Alunos
+            </Nav.Link>
+            <Nav.Link
               href="/turmas"
               className={location.pathname === '/turmas' ? 'active' : ''}
             >
               Turmas
+            </Nav.Link>
+            <Nav.Link
+              href="/inscricoes"
+              className={location.pathname === '/inscricoes' ? 'active' : ''}
+            >
+              Inscrições
             </Nav.Link>
             <Nav.Link
               href="/grupos"
